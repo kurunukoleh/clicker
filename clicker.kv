@@ -1,0 +1,30 @@
+<MainScreen>:
+    BoxLayout:
+        orientation: "vertical"
+        Label:
+            text:"Рахунок"
+        FloatLayout:
+            Image:
+                id: ball
+                size_hint: 3 , 3
+                pos_hint: {"center_x": 0.5 , "top": 2}
+                source: "images (1).jpg"
+            Button:
+                size_hint: 0.5 , 3
+                pos_hint: {"center_x": 0.5, "top": 1}
+                text: "scv"
+                background_color: 1 ,0, 0 ,0
+                on_press : root.click()
+                on_release : root.noc()
+        Button:
+            text: "1488"
+
+<FirstScreen>:
+    BoxLayout:
+        orientation: "vertical"
+        Button:
+            text : "wd"
+        Button:
+            text : "wd1"
+        Button:
+            text : "wd2"
