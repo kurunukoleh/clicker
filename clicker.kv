@@ -1,39 +1,61 @@
 <MainScreen>:
+    canvas.before:
+        Color:
+            rgba: 1 , 1 , 1 , 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
     BoxLayout:
         orientation: "vertical"
         Label:
+            id: scorelabel
             text:"Рахунок"
+            size_hint: 1 , 1
+            pos_hint: {"center_x": 0.5 , "y": 0.1}
+            color : 0 ,0 ,0 ,1
         FloatLayout:
             Image:
                 id: ball
-                size_hint: 3 , 3
-                pos_hint: {"center_x": 0.5 , "top": 2}
-                source: "images (1).jpg"
+                size_hint: 1.2 , 1.2
+                pos_hint: {"center_x": 0.5 , "top": 1.2}
+                source: "2739.jpg"
             Button:
-                size_hint: 0.5 , 1
-                pos_hint: {"center_x": 0.5, "top": 1}
+                size_hint: 0.15 , 0.5
+                pos_hint: {"center_x": 0.47, "top": 0.6}
                 text: ""
                 background_color: 1 ,0, 0 ,0
                 on_press : root.gclick()
                 on_release : root.noc()
         Button:
+            size_hint: 0.5 , 0.5
+            pos_hint: {"center_x": 0.5 , "top": 1}
             text: "взад"
             on_press : root.gclick2()
+            background_color: 1 ,0, 0 ,0.9
 
 
 <FirstScreen>:
+    canvas.before:
+        Color:
+            rgba: 1 , 1 , 1 , 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
     BoxLayout:
         orientation: "vertical"
         Button:
             size_hint: 0.5 , 0.5
-            pos_hint: {"center_x": 0.5 , "top_y": 1}
+            pos_hint: {"center_x": 0.5 , "top": 0.5}
             text : "почати гру"
+            background_color: 1 ,0, 0 ,0.9
             on_press : root.click()
         Button:
             size_hint: 0.5 , 0.5
-            pos_hint: {"center_x": 0.5 , "top_y": 1}
+            pos_hint: {"center_x": 0.5 , "top": 0.5}
+            background_color: 1 ,0, 0 ,0.9
             text : "настройки"
         Button:
             size_hint: 0.5 , 0.5
-            pos_hint: {"center_x": 0.5 , "top_y": 1}
+            pos_hint: {"center_x": 0.5 , "top": 0.5}
+            background_color: 1 ,0, 0 ,0.9
             text : "вихід"
