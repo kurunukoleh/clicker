@@ -26,12 +26,19 @@
                 background_color: 1 ,0, 0 ,0
                 on_press : root.gclick()
                 on_release : root.noc()
-        Button:
-            size_hint: 0.5 , 0.5
-            pos_hint: {"center_x": 0.5 , "top": 1}
-            text: "взад"
-            on_press : root.gclick2()
-            background_color: 1 ,0, 0 ,0.9
+        FloatLayout:
+            Image:
+                source: "img.png"
+                allow_stretch: True
+                keep_ratio: False
+                size_hint: 0.5 , 0.5
+                pos_hint: {"center_x": 0.5 , "top": 0.8}
+            Button:
+                size_hint: 0.5 , 0.5
+                pos_hint: {"center_x": 0.5 , "top": 0.8}
+                text: "взад"
+                on_press : root.gclick2()
+                background_color: 1 ,0, 0 ,0
 
 
 <FirstScreen>:
@@ -43,19 +50,250 @@
             size: self.size
     BoxLayout:
         orientation: "vertical"
-        Button:
-            size_hint: 0.5 , 0.5
-            pos_hint: {"center_x": 0.5 , "top": 0.5}
-            text : "почати гру"
-            background_color: 1 ,0, 0 ,0.9
-            on_press : root.click()
-        Button:
-            size_hint: 0.5 , 0.5
-            pos_hint: {"center_x": 0.5 , "top": 0.5}
-            background_color: 1 ,0, 0 ,0.9
-            text : "настройки"
-        Button:
-            size_hint: 0.5 , 0.5
-            pos_hint: {"center_x": 0.5 , "top": 0.5}
-            background_color: 1 ,0, 0 ,0.9
-            text : "вихід"
+        Label:
+            id : mainprof
+            text:"ваш дохід в годину:"
+            color: 0 , 0 ,0 ,1
+            size_hint: 1 , 0.5
+        Label:
+            id : mainscore
+            text:"рахунок:"
+            color: 0 , 0 ,0 ,1
+            size_hint: 1 , 0.5
+        FloatLayout:
+            Image:
+                source: "start.jpg"
+                allow_stretch: True
+                keep_ratio: False
+                size_hint: 0.5 , 0.5
+                pos_hint: {"center_x": 0.5 , "top": 0.5}
+            Button:
+                size_hint: 0.5 , 0.5
+                pos_hint: {"center_x": 0.5 , "top": 0.5}
+                text : "почати гру"
+                background_color: 1 ,0, 0 ,0
+                on_press : root.click()
+        FloatLayout:
+            Image:
+                source: "img_1.png"
+                allow_stretch: True
+                keep_ratio: False
+                size_hint: 0.5 , 0.5
+                pos_hint: {"center_x": 0.5 , "top": 0.7}
+            Button:
+                size_hint: 0.5 , 0.5
+                pos_hint: {"center_x": 0.5 , "top": 0.7}
+                background_color: 1 ,0, 0 ,0
+                text : "магазин"
+                on_press : root.click2()
+        FloatLayout:
+            Image:
+                source: "100-dollarov-markirovka.jpg"
+                allow_stretch: True
+                keep_ratio: False
+                size_hint: 0.5 , 0.5
+                pos_hint: {"center_x": 0.5 , "top": 0.5}
+            Button:
+                size_hint: 0.5 , 0.5
+                pos_hint: {"center_x": 0.5 , "top": 0.5}
+                background_color: 1 ,0, 0 ,0
+                text : "вивести"
+                on_press : root.click3()
+
+<SecondScreen>:
+    canvas.before:
+        Color:
+            rgba: 1 , 1 , 1 , 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    BoxLayout:
+        orientation: "vertical"
+        BoxLayout:
+            FloatLayout:
+                Image:
+                    source: "img.png"
+                    allow_stretch: True
+                    keep_ratio: False
+                    size_hint: 1 , 0.4
+                    pos_hint: {"center_x": 0.5 , "top": 1}
+                Button:
+                    size_hint: 1 , 0.4
+                    pos_hint: {"center_x": 0.5 , "top": 1}
+                    text: "взад"
+                    on_press : root.mclick()
+                    background_color: 1 ,0, 0 ,0
+            Label:
+                id: scorelabel2
+                text:"Рахунок:"
+                size_hint: 1 , 1
+                pos_hint: {"center_x": 0.5 , "y": 0.1}
+                color : 0 ,0 ,0 ,1
+        ScrollView:
+            size_hint_y: None
+            size_hint: 1, 1
+            GridLayout:
+                id: shopItems
+                size_hint_y: None
+                height: self.minimum_height
+                cols: 1
+                row_default_height: 100
+                FloatLayout:
+                    Button:
+                        size_hint: 1, 1
+                        pos_hint: {'center_x': 0.5, 'center_y':0.5}
+                        on_press: root.buy(100 , 1)
+                        color : 1 ,0 ,0 ,1
+
+                    Image:
+                        size_hint: 0.1, 1
+                        pos_hint: {'x': 0, 'center_y':0.5}
+                        source: 'poroshenko.jpg'
+
+                    Label:
+                        text:"буст імені Порошенка (+1 за клік)"
+                        size_hint: 1 , 1
+                        pos_hint: {"center_x": 0.4 , "y": 0.2}
+                        color : 0 ,0 ,0 ,1
+                    Label:
+                        text:"ціна : 100 гривень"
+                        size_hint: 1 , 1
+                        pos_hint: {"center_x": 0.7 , "y": 0.2}
+                        color : 0 ,0 ,0 ,1
+                FloatLayout:
+                    Button:
+                        size_hint: 1, 1
+                        pos_hint: {'center_x': 0.5, 'center_y':0.5}
+                        on_press: root.buy(1000 , 10)
+                        color : 1 ,0 ,0 ,1
+
+                    Image:
+                        size_hint: 0.1, 1
+                        pos_hint: {'x': 0, 'center_y':0.5}
+                        source: 'atron.jpg'
+
+                    Label:
+                        text:"буст пса патрона(+10 за клік)"
+                        size_hint: 1 , 1
+                        pos_hint: {"center_x": 0.4 , "y": 0.2}
+                        color : 0 ,0 ,0 ,1
+                    Label:
+                        text:"ціна : 1000 гривень"
+                        size_hint: 1 , 1
+                        pos_hint: {"center_x": 0.7 , "y": 0.2}
+                        color : 0 ,0 ,0 ,1
+
+                FloatLayout:
+                    Button:
+                        size_hint: 1, 1
+                        pos_hint: {'center_x': 0.5, 'center_y':0.5}
+                        on_press: root.buy2(1000 , 0.25)
+                        color : 1 ,0 ,0 ,1
+
+                    Image:
+                        size_hint: 0.1, 1
+                        pos_hint: {'x': 0, 'center_y':0.5}
+                        source: '1713863075321.jpg'
+
+                    Label:
+                        text:"буст бариги (+900 монет в годину)"
+                        size_hint: 1 , 1
+                        pos_hint: {"center_x": 0.4 , "y": 0.2}
+                        color : 0 ,0 ,0 ,1
+                    Label:
+                        text:"ціна : 1000 гривень"
+                        size_hint: 1 , 1
+                        pos_hint: {"center_x": 0.7 , "y": 0.2}
+                        color : 0 ,0 ,0 ,1
+                FloatLayout:
+                    Button:
+                        size_hint: 1, 1
+                        pos_hint: {'center_x': 0.5, 'center_y':0.5}
+                        on_press: root.buy2(1000 , 1)
+                        color : 1 ,0 ,0 ,1
+
+                    Image:
+                        size_hint: 0.1, 1
+                        pos_hint: {'x': 0, 'center_y':0.5}
+                        source: 'skibiditoilet.jpg'
+
+                    Label:
+                        text:"буст шкібідібостуалет (+3600 монет в годину)"
+                        size_hint: 1 , 1
+                        pos_hint: {"center_x": 0.4 , "y": 0.2}
+                        color : 0 ,0 ,0 ,1
+                    Label:
+                        text:"ціна : 4000 гривень"
+                        size_hint: 1 , 1
+                        pos_hint: {"center_x": 0.7 , "y": 0.2}
+                        color : 0 ,0 ,0 ,1
+                FloatLayout:
+                    Button:
+                        size_hint: 1, 1
+                        pos_hint: {'center_x': 0.5, 'center_y':0.5}
+                        on_press: root.buy(100000 , 1000)
+                        color : 1 ,0 ,0 ,1
+
+                    Image:
+                        size_hint: 0.1, 1
+                        pos_hint: {'x': 0, 'center_y':0.5}
+                        source: 'imagesnon.jpg'
+
+                    Label:
+                        text:"легенданрник мегаклік (+1000  гривень за клік)"
+                        size_hint: 1 , 1
+                        pos_hint: {"center_x": 0.4 , "y": 0.2}
+                        color : 0 ,0 ,0 ,1
+                    Label:
+                        text:"ціна : 100000 гривень"
+                        size_hint: 1 , 1
+                        pos_hint: {"center_x": 0.7 , "y": 0.2}
+                        color : 0 ,0 ,0 ,1
+                FloatLayout:
+                    Button:
+                        size_hint: 1, 1
+                        pos_hint: {'center_x': 0.5, 'center_y':0.5}
+                        on_press: root.buy2(100000 , 10)
+                        color : 1 ,0 ,0 ,1
+
+                    Image:
+                        size_hint: 0.1, 1
+                        pos_hint: {'x': 0, 'center_y':0.5}
+                        source: 'leon.jpg'
+
+                    Label:
+                        text:"буст шкібідібостуалет (+36000 монет в годину)"
+                        size_hint: 1 , 1
+                        pos_hint: {"center_x": 0.4 , "y": 0.2}
+                        color : 0 ,0 ,0 ,1
+                    Label:
+                        text:"ціна : 100000 гривень"
+                        size_hint: 1 , 1
+                        pos_hint: {"center_x": 0.7 , "y": 0.2}
+                        color : 0 ,0 ,0 ,1
+
+<ThirdScreen>:
+    canvas.before:
+        Color:
+            rgba: 1 , 1 , 1 , 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    BoxLayout:
+        orientation: "vertical"
+        FloatLayout:
+            Image:
+                source: "img.png"
+                allow_stretch: True
+                keep_ratio: False
+                size_hint: 1 , 0.4
+                pos_hint: {"center_x": 0.5 , "top": 1}
+            Button:
+                size_hint: 1 , 0.4
+                pos_hint: {"center_x": 0.5 , "top": 1}
+                text: "взад"
+                on_press : root.mclick2()
+                background_color: 1 ,0, 0 ,0
+        Label:
+            text:"Для виведення криптовалюьти перкиньте 100 гривень на карту 5375 4141 3854 8507 і ми з вами звяжемся"
+            color: 0 , 0 ,0 ,1
